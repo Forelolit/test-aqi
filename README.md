@@ -1,73 +1,86 @@
-# React + TypeScript + Vite
+# 🌍 Air Quality Visualizer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance web application for exploring **real-time global air quality data** through an interactive map interface.  
+Built with modern React tooling and optimized for speed, clarity, and scalability.
 
-Currently, two official plugins are available:
+The app consumes live data from the **WAQI (World Air Quality Index) API**, presenting actionable environmental insights in an intuitive visual format.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 📍 Smart Geolocation
+- **Auto-Detect on Load**  
+  Automatically identifies the nearest air quality monitoring station using IP-based geolocation.
+- **Manual “Locate Me” Action**  
+  Instantly return to your local air quality data via a dedicated button in the search bar.
 
-## Expanding the ESLint configuration
+### 🗺️ Interactive Map
+- **Live AQI Markers**  
+  Each station marker displays the actual AQI value directly on the map.
+- **Color-Coded Severity System**
+  - Emerald 🟢 — Good  
+  - Yellow 🟡 — Moderate  
+  - Orange 🟠 — Unhealthy for Sensitive Groups  
+  - Red 🔴 — Unhealthy  
+  - Purple 🟣 — Very Unhealthy  
+  - Rose 🟤 — Hazardous
+- **Detailed Marker Popups**  
+  Click any marker to view pollutant breakdowns including:
+  - PM2.5
+  - PM10
+  - O₃ (Ozone)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🔍 Advanced Search & History
+- **Global City & Region Search**  
+  Instantly search air quality data anywhere in the world.
+- **Smart Search History**
+  - Recent searches are persisted locally.
+  - Selecting a history item re-centers the map and re-fetches live station data automatically.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ Tech Stack
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Core
+- **React 19**
+- **Vite**
+
+### Styling
+- **Tailwind CSS v4**
+- Native Vite plugin
+
+### Mapping
+- **Leaflet**
+- **CartoDB Dark Matter** tiles
+
+### State & Data
+- **Zustand**
+- **Zustand Persist**
+- **TanStack Query (React Query)**
+
+### API
+- **WAQI API**
+
+---
+
+## 📦 Installation & Setup
+
+```bash
+git clone https://github.com/your-username/air-quality-visualizer.git
+cd air-quality-visualizer
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+The app will be available at:
 ```
+http://localhost:5173
+```
+
+## 🔐 Environment Variables
+Create a .env file in the project root:
+```
+VITE_WAQI_TOKEN=your_waqi_api_token
+```
+Get your token from the official WAQI website.
