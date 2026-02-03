@@ -1,0 +1,131 @@
+@import 'tailwindcss';
+
+@theme {
+    --color-background: hsl(240 5% 6%);
+    --color-foreground: hsl(240 5% 96%);
+    --color-card: hsl(240 4% 10%);
+    --color-card-foreground: hsl(240 5% 96%);
+    --color-popover: hsl(240 4% 10%);
+    --color-popover-foreground: hsl(240 5% 96%);
+    --color-primary: hsl(240 5% 96%);
+    --color-primary-foreground: hsl(240 5.9% 10%);
+    --color-secondary: hsl(240 4% 16%);
+    --color-secondary-foreground: hsl(240 5% 96%);
+    --color-muted: hsl(240 4% 16%);
+    --color-muted-foreground: hsl(240 5% 65%);
+    --color-accent: hsl(240 4% 16%);
+    --color-accent-foreground: hsl(240 5% 96%);
+    --color-destructive: hsl(0 63% 31%);
+    --color-destructive-foreground: hsl(240 5% 96%);
+    --color-border: hsl(240 4% 16%);
+    --color-input: hsl(240 4% 16%);
+    --color-ring: hsl(240 5% 84%);
+    --radius-lg: 0.5rem;
+    --radius-md: calc(0.5rem - 2px);
+    --radius-sm: calc(0.5rem - 4px);
+}
+
+@layer base {
+    :root {
+        --background: 240 5% 6%; /* Almost black */
+        --foreground: 240 5% 96%;
+
+        --card: 240 4% 10%;
+        --card-foreground: 240 5% 96%;
+
+        --popover: 240 4% 10%;
+        --popover-foreground: 240 5% 96%;
+
+        --primary: 240 5% 96%;
+        --primary-foreground: 240 5.9% 10%;
+
+        --secondary: 240 4% 16%;
+        --secondary-foreground: 240 5% 96%;
+
+        --muted: 240 4% 16%;
+        --muted-foreground: 240 5% 65%;
+
+        --accent: 240 4% 16%;
+        --accent-foreground: 240 5% 96%;
+
+        --destructive: 0 63% 31%;
+        --destructive-foreground: 240 5% 96%;
+
+        --border: 240 4% 16%;
+        --input: 240 4% 16%;
+        --ring: 240 5% 84%;
+
+        --radius: 0.5rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+/* Custom AQI Markers */
+.custom-aqi-marker {
+    background: none;
+    border: none;
+}
+
+.aqi-marker-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    color: white;
+    font-weight: bold;
+    font-size: 11px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.aqi-marker-inner span {
+    transform: rotate(45deg);
+}
+
+.aqi-vgood {
+    background-color: #10b981;
+} /* Emerald 500 */
+.aqi-good {
+    background-color: #eab308;
+} /* Yellow 500 */
+.aqi-moderate {
+    background-color: #f97316;
+} /* Orange 500 */
+.aqi-unhealthy {
+    background-color: #ef4444;
+} /* Red 500 */
+.aqi-vunhealthy {
+    background-color: #9333ea;
+} /* Purple 600 */
+.aqi-hazardous {
+    background-color: #4c0519;
+} /* Rose 900 */
+.aqi-unknown {
+    background-color: #71717a;
+} /* Zinc 500 */
+
+.leaflet-container {
+    background: #18181b; /* zinc-950 */
+    font-family: inherit;
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    background: #18181b;
+    color: #f4f4f5;
+    border: 1px solid #3f3f46;
+    border-radius: var(--radius);
+}
+.leaflet-popup-content {
+    margin: 0;
+}
